@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha Seu Fera</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #eef2f3, #8e9eab);
+      color: #333;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 30px 0;
+      color: #2c3e50;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    .interests {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #7f8c8d;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #2980b9;
+      color: #fff;
+      border-radius: 20px;
+      padding: 5px 10px;
+      margin: 5px 3px;
+      font-size: 0.8rem;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .modal-content img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content h1 {
+      font-size: 1.8rem;
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+
+    .modal-content p {
+      font-size: 1rem;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #e74c3c;
+    }
+
+    .adopt-button {
+      background-color: #25d366; /* WhatsApp Green */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .adopt-button:hover {
+      background-color: #128c7e; /* WhatsApp Dark Green */
+    }
+  </style>
+</head>
+<body>
+  <h1>Escolha Seu Fera</h1>
+
+  <div class="sub-text">
+    Ao apadrinhar um "fera" do curso de Ciência de Dados e Inteligência Artificial da UFPB, o veterano se compromete a auxiliar o calouro no curso e ficar à disposição para tirar quaisquer dúvidas que possam surgir. É uma excelente oportunidade de fazer novos amigos e ajudar na adaptação ao ambiente acadêmico.
+  </div>
+
+  <div class="grid">
+    <!-- Ana Beatriz Mota da Cruz -->
+    <div class="card" onclick="openDetails('Ana Beatriz Mota da Cruz', 
+      'Sobre mim: Gosto de viajar, ir ao cinema, faço ballet e adoro matemática e cor de rosa.\n\nObjetivo: No momento o meu foco é a minha jornada acadêmica, não estou desesperada para achar um estágio, mas sim para participar de projetos, ligas acadêmicas, labs etc.', 
+      ['Matemática', 'Ballet', 'Viagem'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Ana Beatriz Mota da Cruz">
+      <h2>Ana Beatriz Mota da Cruz</h2>
+      <p class="interests">
+        <span class="tag">Matemática</span>
+        <span class="tag">Ballet</span>
+        <span class="tag">Viagem</span>
+      </p>
+      <a class="adopt-button" href="https://wa.me/5583988432374?text=Quero%20adotar%20a%20Ana%20Beatriz%20Mota%20da%20Cruz" target="_blank">Adotar</a>
+      <p class="socials">Instagram: @biamotacruz; LinkedIn: anabiamotacruz</p>
+    </div>
+  
+    <!-- Thiago Marques -->
+    <div class="card" onclick="openDetails('Thiago Marques', 
+      'Sobre mim: Opa, meu nome é Thiago, me interesso muito por carros e tecnologia no geral, além de ser bastante fã de música. Gosto de qualquer estilo musical, mas o estilo favorito é sempre rock ou MPB. Minha cor favorita é azul. Infelizmente ainda não toco nenhum instrumento, mas eu queria bastante. \n\nObjetivo: Meu objetivo dentro do curso é crescer profissionalmente e garantir um bom futuro para mim. Sou viciado em dados, dashboards e analítica.', 
+      ['Tecnologia', 'Música', 'Carros'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Thiago Marques">
+      <h2>Thiago Marques</h2>
+      <p class="interests">
+        <span class="tag">Tecnologia</span>
+        <span class="tag">Música</span>
+        <span class="tag">Carros</span>
+      </p>
+      <a class="adopt-button" href="https://wa.me/5583988432374?text=Quero%20adotar%20o%20Thiago%20Marques" target="_blank">Adotar</a>
+      <p class="socials">Instagram: @thiago__marques; Discord: Thiago Marques #3189</p>
+    </div>
+  
+    <!-- Leonardo Filho -->
+    <div class="card" onclick="openDetails('Leonardo Filho', 
+      'Sobre mim: Gosto de jogar jogos singleplayer e, às vezes, multiplayer. Também gosto bastante de aprender coisas novas. Tenho uma irmã mais nova e minha cor favorita é ciano. Me considero uma pessoa mais introvertida e no meu canto. \n\nObjetivo: Meu objetivo ainda não está muito claro para mim, mas gostaria de trabalhar com algo que envolva criatividade e a resolução de problemas com matemática e programação.', 
+      ['Jogos', 'Aprendizado', 'Matemática'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Leonardo Filho">
+      <h2>Leonardo Filho</h2>
+      <p class="interests">
+        <span class="tag">Jogos</span>
+        <span class="tag">Aprendizado</span>
+        <span class="tag">Matemática</span>
+      </p>
+      <a class="adopt-button" href="https://wa.me/5583988432374?text=Quero%20adotar%20o%20Leonardo%20Filho" target="_blank">Adotar</a>
+      <p class="socials">Discord: AlortCraft#9588</p>
+    </div>
+  
+    <!-- Cauã Henrique -->
+    <div class="card" onclick="openDetails('Cauã Henrique', 
+      'Sobre mim: Gosto de jogar xadrez, ler livros e ver muitos filmes.\n\nObjetivo: Quero ser um profissional muito bom com um conhecimento vasto.', 
+      ['Xadrez', 'Livros', 'Filmes'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Cauã Henrique">
+      <h2>Cauã Henrique</h2>
+      <p class="interests">
+        <span class="tag">Xadrez</span>
+        <span class="tag">Livros</span>
+        <span class="tag">Filmes</span>
+      </p>
+      <a class="adopt-button" href="https://wa.me/5583988432374?text=Quero%20adotar%20o%20Cauã%20Henrique" target="_blank">Adotar</a>
+    </div>
+  
+    <!-- Sofia Pontes -->
+    <div class="card" onclick="openDetails('Sofia Pontes', 
+      'Sobre mim: Sou bem solta (às vezes até demais). Gosto de tudo, mas principalmente de música. Já tentei tocar piano, bateria e violão, mas não sei 100%. Gosto de qualquer estilo, desde rock até Kpop e MPB. Também curto jogar qualquer esporte e videogames (Valorant e LoL). Gosto de praia e gatos também.\n\nObjetivo: Meu objetivo no curso é inicialmente entrar em algum laboratório e ajudar o máximo de pessoas ao longo desses anos! Ajudar com matéria, enturmar a galera e conciliar isso com os estudos para sempre estar adquirindo conhecimento.', 
+      ['Música', 'Esportes', 'Jogos'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Sofia Pontes">
+      <h2>Sofia Pontes</h2>
+      <p class="interests">
+        <span class="tag">Música</span>
+        <span class="tag">Esportes</span>
+        <span class="tag">Jogos</span>
+      </p>
+      <a class="adopt-button" href="https://wa.me/5583988432374?text=Quero%20adotar%20a%20Sofia%20Pontes" target="_blank">Adotar</a>
+      <p class="socials">Instagram: sofiapllima</p>
+    </div>
+  
+    <!-- Maria Nathália Pereira Rocha -->
+    <div class="card" onclick="openDetails('Maria Nathália Pereira Rocha', 
+      'Sobre mim: Gosto de ler, amo o final de tarde na praia e estou aprendendo a tocar violão (toco? Mais ou menos kkkkk). Amo ir à academia e correr. Minha cor favorita é branco e laranja. Tenho uma irmãzinha de 13 anos. Sou extrovertida e gosto de fazer amizades. \n\n Objetivo: Pretendo valorizar cada momento/cada aula no curso. Como também penso em fazer uma pós e um doutorado na área que estou fazendo graduação, para assim, conseguir um estágio…', 
+      ['Leitura', 'Praia', 'Violão'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Maria Nathália Pereira Rocha">
+      <h2>Maria Nathália Pereira Rocha</h2>
+      <p class="interests">
+        <span class="tag">Leitura</span>
+        <span class="tag">Praia</span>
+        <span class="tag">Violão</span>
+      </p>
+      <a class="adopt-button" href="https://wa.me/5583988432374?text=Quero%20adotar%20a%20Maria%20Nathália%20Pereira%20Rocha" target="_blank">Adotar</a>
+      <p class="socials">Instagram: @ttaliarocha</p>
+    </div>
+
+    <!-- Pedro Lucas Alves da Silva Barbosa -->
+    <div class="card" onclick="openDetails('Pedro Lucas Alves da Silva Barbosa', 
+      'Sobre mim: Gosto de jogar FIFA, assistir filmes, sou extrovertido, gosto de fazer amizades e aprender coisas novas.\n\nObjetivo: Pretendo desfrutar ao máximo do curso, fazendo amizades, participando dos projetos e buscando encontrar uma área que chame a minha atenção.', 
+      ['FIFA', 'Filmes', 'Amizades'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Pedro Lucas  Alves da Silva Barbosa">
+      <h2>Pedro Lucas Alves da Silva Barbosa</h2>
+      <p class="interests">
+        <span class="tag">FIFA</span>
+        <span class="tag">Filmes</span>
+        <span class="tag">Amizades</span>
+      </p>
+      <a class="adopt-button" href="https://www.linkedin.com/in/pedro-lucas-alves-da-silva-barbosa-2baa552b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Adotar</a>
+      <p class="socials">Instagram: @crvgpedroo; LinkedIn: pedro-lucas-alves-da-silva-barbosa</p>
+    </div>
+  
+    <!-- Yosef Nascimento -->
+    <div class="card" onclick="openDetails('Yosef Nascimento', 
+      'Sobre mim: Gosto de jogar (recentemente Skyrim, LoL, Gran Turismo 4, Genshin Impact), correr e nadar (embora não tenha entrado numa piscina há 2 anos), acompanho Fórmula 1 ocasionalmente e gosto de cozinhar.\n\nObjetivo: Ainda não tenho um objetivo final em mente, mas planejo realizar diversas atividades extras para complementar a formação.', 
+      ['Jogos', 'Fórmula 1', 'Cozinhar'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Yosef Nascimento">
+      <h2>Yosef Nascimento</h2>
+      <p class="interests">
+        <span class="tag">Jogos</span>
+        <span class="tag">Fórmula 1</span>
+        <span class="tag">Cozinhar</span>
+      </p>
+      <a class="adopt-button" href="https://www.linkedin.com/in/yosef-joseph-25585833b?trk=contact-info" target="_blank">Adotar</a>
+      <p class="socials">Instagram: yosefjoseph; LinkedIn: yosef-joseph; Discord: yosefjoseph</p>
+    </div>
+  
+    <!-- Vynicios Daniel -->
+    <div class="card" onclick="openDetails('Vynicios Daniel', 
+      'Sobre mim: Eu sou reservado, mas gosto muito de conhecer gente nova e fazer novas amizades. Curto jogar uns jogos de RPG, as vezes entro no LoL pra passar um pouco de raiva, adoro música e estou aprendendo a tocar violão.\n\nObjetivo: Desde criança sempre fui muito próximo do PC, sempre tive interesse em aprender mais sobre como tudo aquilo funcionava, até que decidi trazer essa vontade de aprender para um contexto mais profissional. O meu objetivo dentro do curso é me aprofundar na área de dados e me tornar um profissional competente.', 
+      ['Jogos', 'Música', 'Programação'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Vynicios Daniel">
+      <h2>Vynicios Daniel</h2>
+      <p class="interests">
+        <span class="tag">Jogos</span>
+        <span class="tag">Música</span>
+        <span class="tag">Programação</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/vyni_smr" target="_blank">Adotar</a>
+      <p class="socials">Instagram: Vyni_smr</p>
+    </div>
+  
+    <!-- Josinaldo da Silva Sousa -->
+    <div class="card" onclick="openDetails('Josinaldo da Silva Sousa', 
+      'Sobre mim: Gosto de praia, esportes, sou um pouco introvertido, tenho uma irmã e minha cor favorita é azul.\n\nObjetivo: Trabalhar na área de dados.', 
+      ['Praia', 'Esportes', 'Dados'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Josinaldo da Silva Sousa">
+      <h2>Josinaldo da Silva Sousa</h2>
+      <p class="interests">
+        <span class="tag">Praia</span>
+        <span class="tag">Esportes</span>
+        <span class="tag">Dados</span>
+      </p>
+      <a class="adopt-button" href="https://wa.me/5583988432374?text=Quero%20adotar%20Josinaldo%20da%20Silva%20Sousa" target="_blank">Adotar</a>
+      <p class="socials">Discord: josinaldo945</p>
+    </div>
+  
+    <!-- Wilton Terto Leal -->
+    <div class="card" onclick="openDetails('Wilton Terto Leal', 
+      'Sobre mim: Sou pernambucano, graduado em Artes Visuais pela UFPB. Meu interesse em tecnologia vem desde 2009, quando iniciei um curso de TI no IFPB. Como artista, exploro a ideia de insolência e erro a partir da glitch art e participei de projetos envolvendo organização e catalogação de acervos de arte.\n\nObjetivo: Meu objetivo central é a inserção no mercado de trabalho, utilizando minhas habilidades artísticas e tecnológicas para trabalhar com bancos de dados relacionados à arte e desenvolvimento de projetos.', 
+      ['Arte', 'Tecnologia', 'Glitch Art'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Wilton Terto Leal">
+      <h2>Wilton Terto Leal</h2>
+      <p class="interests">
+        <span class="tag">Arte</span>
+        <span class="tag">Tecnologia</span>
+        <span class="tag">Glitch Art</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/wltn.tl" target="_blank">Adotar</a>
+      <p class="socials">Instagram: @wltn.tl, @fruwill</p>
+    </div>
+  
+    <!-- Luiz Carlos Veloso -->
+    <div class="card" onclick="openDetails('Luiz Carlos Veloso', 
+      'Sobre mim: Gosto de jogar CS2, Terraria, NBA2K, RPG e jogos de tabuleiro. Também gosto de cozinhar e passar tempo com minha namorada e amigos.\n\nObjetivo: Meu interesse pelo curso é voltado para a área de inteligência artificial, com foco nas usabilidades como a geração de quadros em jogos e automação de tarefas.', 
+      ['Jogos', 'RPG', 'Cozinhar'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Luiz Carlos Veloso">
+      <h2>Luiz Carlos Veloso</h2>
+      <p class="interests">
+        <span class="tag">Jogos</span>
+        <span class="tag">RPG</span>
+        <span class="tag">Cozinhar</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/luizcarlost_t" target="_blank">Adotar</a>
+      <p class="socials">Instagram: luizcarlost_t</p>
+    </div>
+  
+    <!-- João Victor de Souza Lucena Meireles -->
+    <div class="card" onclick="openDetails('João Victor de Souza Lucena Meireles', 
+      'Sobre mim: Gosto de esportes, especialmente futebol e basquete. Sou flamenguista e também gosto de acompanhar futebol americano. Jogos eletrônicos são um dos meus hobbies, mas também gosto de ler HQs e assistir animes, séries e filmes.\n\nObjetivo: Meu interesse está voltado para a área de inteligência artificial, mas também pretendo explorar a área de dados. Meu objetivo é criar conexões, evoluir como pessoa e profissional, e encontrar a área que mais me atraí.', 
+      ['Esportes', 'Jogos', 'Inteligência Artificial'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de João Victor de Souza Lucena Meireles">
+      <h2>João Victor de Souza Lucena Meireles</h2>
+      <p class="interests">
+        <span class="tag">Esportes</span>
+        <span class="tag">Jogos</span>
+        <span class="tag">Inteligência Artificial</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/jvsouza_l" target="_blank">Adotar</a>
+      <p class="socials">Instagram: jvsouza_l</p>
+    </div>
+
+    <!-- Diego Sousa -->
+    <div class="card" onclick="openDetails('Diego Sousa', 
+      'Sobre mim: Sou o meio entre extrovertido e introvertido, depende bastante de algumas coisas, curto jogar, desde novo, antigamente curtia muito fps, mas atualmente tô numa vibe mais casual, jogos competitivos que jogo atualmente são rocket league e overwatch, curto bastante sair, vou para qualquer lugar, tanto um rolê de dia como uma praia, comer fora, como também rolês de noite, um barzinho e tals, cor favorita - verde/azul, gosto demais de música, 24h por dia estou escutando música, ouço de tudo, mas não muito sertanejo, atualmente tô escutando muito R&B e MPB e um Rock meio alternativo, tô começando a ver uns anime, terminei jujutsu, solo levelling, haikyuu e outros ai, curto bastante assistir filmes, meu filme preferido é Como treinar seu dragão e sem ser animação é Aftersun.\n\nObjetivo: Na primeira vez que fiz o Enem pra valer, passei em Eng. da Computação, mas acabei não cursando, foi durante a pandemia e ela acabou me afetando muito, então tirei um tempo pra cuidar da minha saúde mental, tô voltando agora com 21 anos e entrei em CDIA por recomendações de amigos meus que fazem CC e até pela minha irmã e meu cunhado que trabalha com ciência de dados, sendo sincero, não tenho objetivos, estou por fora do que irei seguir, curto demais matemática e sempre gostei de estudar matemática, vi um pouco de programação quando fui iniciar Eng. da Computação, mas terminei não seguindo uma rotina de treino em programar, ou seja, esqueci as paradas, vivia na frente do computador e sinto que posso sim gostar de programar, por isso estou aqui, tive outras opções para cursar, mas acabei escolhendo CDIA por me interessar em entrar nesse mundo, tenho uns amigos que já estão no sexto ou sétimo período de CC e uns em EC e pretendo ver o que CDIA possui para me oferecer.', 
+      ['Jogos', 'Música', 'Esportes'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Diego Sousa">
+      <h2>Diego Sousa</h2>
+      <p class="interests">
+        <span class="tag">Jogos</span>
+        <span class="tag">Música</span>
+        <span class="tag">Esportes</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/diegosousam_" target="_blank">Adotar</a>
+      <p class="socials">Instagram: diegosousam_; Discord: legodego ou Dego#6477</p>
+    </div>
+  
+    <!-- Jonatas Miguel de Sousa Soares -->
+    <div class="card" onclick="openDetails('Jonatas Miguel de Sousa Soares', 
+      'Sobre mim: Gosto de jogar vários jogos, joguei mais Warzone e Overwatch; Tocar instrumentos e programar no geral. Não sou muito de sair, mas sempre que possível aceito convites. Além disso, gosto muito de volêi.\n\nObjetivo: Tenho como foco arrumar um trabalho na área o mais rápido possível e aprender bastante sobre IA. Atualmente, gostei bastante do TRIL, justamente por esse enfoque mais empresarial, mas também tive muitos interesses no ARIA.', 
+      ['Jogos', 'Música', 'Vôlei'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Jonatas Miguel de Sousa Soares">
+      <h2>Jonatas Miguel de Sousa Soares</h2>
+      <p class="interests">
+        <span class="tag">Jogos</span>
+        <span class="tag">Música</span>
+        <span class="tag">Vôlei</span>
+      </p>
+      <a class="adopt-button" href="https://www.linkedin.com/in/jonatasmss/" target="_blank">Adotar</a>
+      <p class="socials">Instagram: @jonatas_migs; LinkedIn: jonatasmss</p>
+    </div>
+  
+    <!-- Walker Teotonio -->
+    <div class="card" onclick="openDetails('Walker Teotonio', 
+      'Sobre mim: Curto animes, gosto de jogar no PC ultimamente abandonei o fps e jogo mais jogos de história e Indie. Diria que sou um extrovertido ou introvertido a depender do local e das pessoas kkk, Um rolê bom pra mim é uma praia, um cinema ou qualquer lugar pra conversar com a glr tendo bebida e comida. Minha cor favorita é vermelho.\n\nObjetivo: Meu objetivo é trabalhar com Otimização, Visão Computacional e talvez só que mais difícil trabalhar com segurança da informação, só que infelizmente pouca gente mexe com isso não vi ninguém na UFPB que curta a área.', 
+      ['Animes', 'Jogos', 'Segurança da Informação'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Walker Teotonio">
+      <h2>Walker Teotonio</h2>
+      <p class="interests">
+        <span class="tag">Animes</span>
+        <span class="tag">Jogos</span>
+        <span class="tag">Segurança da Informação</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/xdwktcb" target="_blank">Adotar</a>
+      <p class="socials">Instagram: xdwktcb</p>
+    </div>
+  
+    <!-- Julia Rosa -->
+    <div class="card" onclick="openDetails('Julia Rosa', 
+      'Sobre mim: Eu gosto muito de música, escuto vários gêneros, mas um dos meus preferidos é rock, shoegaze, etc, eu gosto muito de deftones, my chemical romance, Queen, Tyler The creator, e mais um monte, eu gosto de jogar, seja jogos de PC, ps4, ou de carta, mas ultimamente eu não tenho muito tempo, meus jogos preferidos são Detroit become human e Life is strange, eu sou uma pessoa introvertida, mas eu tô sempre saindo da minha zona de conforto, fazendo apresentações, falando em público e tals. Eu gosto muito de inglês, a língua e a cultura inglesa. Eu sei tocar teclado, mas em nível iniciante, e minha cor favorita é azul.\n\nObjetivo: Meu objetivo no curso é seguir nessa área de tecnologia, porque é um interesse que eu tenho desde criança, antes de escolher ciências de dados eu estava a procura do curso de mecatronica, porque eu tenho muito interesse em robótica, eu também tenho muito interesse em trabalhar com tecnologia pra alguma empresa de fora, principalmente do Reino Unido, porque eu já tive experiências no país em 2023, por meio de um Intercâmbio do governo.', 
+      ['Música', 'Jogos', 'Tecnologia'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Julia Rosa">
+      <h2>Julia Rosa</h2>
+      <p class="interests">
+        <span class="tag">Música</span>
+        <span class="tag">Jogos</span>
+        <span class="tag">Tecnologia</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/juliarosa05" target="_blank">Adotar</a>
+      <p class="socials">Instagram: juliarosa05</p>
+    </div>
+
+    <!-- Vinícius Alencar de Medeiros -->
+    <div class="card" onclick="openDetails('Vinícius Alencar de Medeiros', 
+      'Sobre mim: Primeiro, acho que talvez eu sou um pouco mais fechado e introvertido, mas gosto de fazer amizades e minha cor favorita é acho que talvez preto ou verde. Gosto de lugares tranquilos e amo praia, não toco nenhum instrumento e gosto de jogar nas horas vagas um Roblox, Minecraft e curto ouvir uma música, principalmente um Rockzinho, Phonk e Eletrônica.\n\nObjetivo: Ainda pretendo explorar melhor as oportunidades. Entretanto, creio que meu foco em CDIA seja voltado para oportunidades com IA e explorar esse campo.', 
+      ['Jogos', 'Música', 'IA'], 'test.jpg')">
+      <img src="test.jpg" alt="Foto de Vinícius Alencar de Medeiros">
+      <h2>Vinícius Alencar de Medeiros</h2>
+      <p class="interests">
+        <span class="tag">Jogos</span>
+        <span class="tag">Música</span>
+        <span class="tag">IA</span>
+      </p>
+      <a class="adopt-button" href="https://www.instagram.com/meh_vinicius" target="_blank">Adotar</a>
+      <p class="socials">Instagram: meh_vinicius</p>
+    </div>
+  </div>
+  
+
+  <div id="modal" class="modal-overlay" style="display: none;" onclick="closeDetails()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-button" onclick="closeDetails()">&times;</button>
+      <img id="modal-image" src="" alt="">
+      <h1 id="modal-name"></h1>
+      <p id="modal-description"></p>
+      <p class="interests">
+        <span class="tag" id="modal-interest1"></span>
+        <span class="tag" id="modal-interest2"></span>
+        <span class="tag" id="modal-interest3"></span>
+      </p>
+    </div>
+
+  <script>
+    function openDetails(name, description, interests, image) {
+      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('modal-name').innerText = name;
+      document.getElementById('modal-description').innerText = description;
+      document.getElementById('modal-image').src = image;
+      document.getElementById('modal-interest1').innerText = interests[0];
+      document.getElementById('modal-interest2').innerText = interests[1];
+      document.getElementById('modal-interest3').innerText = interests[2];
+    }
+
+    function closeDetails() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
